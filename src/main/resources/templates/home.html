@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://thymeleaf.org"
+        lang="pt-br">
+<head th:insert="base :: head(Home)"></head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <th>Name</th>
+            <th>CRM</th>
+            </thead>
+            <tbody>
+            <tr th:each="medic : ${medics}">
+                <td th:text="${medic.firstName}"></td>
+                <td th:text="${medic.crm}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a th:href="@{/medic/new}" class="btn btn-primary">Add new medic</a>
+</body>
+</html>
