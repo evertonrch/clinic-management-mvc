@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{base :: head('Medics')}"></head>
+<body>
+    <div class="container">
+        <table class="table table-sm mb-3">
+            <thead>
+                <th>FirstName</th>
+                <th>CRM</th>
+                <th>Specialization</th>
+                <th class="text-center">Action</th>
+            </thead>
+            <tbody>
+                <tr th:each="medic : ${medics}">
+                    <td th:text="${medic.firstName}"></td>
+                    <td th:text="${medic.crm}"></td>
+                    <td th:text="${medic.specialization} ? ${medic.specialization.description} : 'No spec'"></td>
+                    <td class="text-center">
+                        <a class="btn btn-danger" th:href="@{/medic/{firstName}(firstName=${medic.firstName})}">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                        <a class="btn btn-warning" th:href="@{/medic/{firstName}(firstName=${medic.firstName})}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-primary" th:href="@{/medic/form}">Add a new medic</a>
+        <a class="text-decoration-none text-right float-end" th:href="@{/home}">
+            <i class="fa-sharp fa-solid fa-arrow-left"></i>
+            <span>Go to back home page</span>
+        </a>
+    </div>
+</body>
+</html>

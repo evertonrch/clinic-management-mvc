@@ -1,22 +1,74 @@
 <!DOCTYPE html>
 <html   xmlns:th="http://thymeleaf.org"
         lang="pt-br">
-<head th:insert="base :: head(Home)"></head>
+<head th:insert="~{base :: head('Home')}"></head>
+<style>
+    .card img {
+        height: 200px;
+    }
+</style>
 <body>
-    <div class="container">
-        <table class="table">
-            <thead>
-            <th>Name</th>
-            <th>CRM</th>
-            </thead>
-            <tbody>
-            <tr th:each="medic : ${medics}">
-                <td th:text="${medic.firstName}"></td>
-                <td th:text="${medic.crm}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <a th:href="@{/medic/new}" class="btn btn-primary">Add new medic</a>
+    <header>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary d-flex justify-content-between">
+                <a href="#" class="navbar-brand">
+                    Logo
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="container mt-5">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card border-primary justify-content-center" style="width: 18rem;">
+                        <img width="40" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" class="card-img-top" alt="Medic image">
+                        <div class="card-body">
+                            <h5 class="card-title">Medics</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a th:href="@{/medic/}" class="card-link">
+                                <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card border-primary justify-content-center" style="width: 18rem;">
+                        <img width="40" src="https://media.istockphoto.com/id/1331029732/pt/foto/close-up-of-a-male-doctor-hand-hold-a-silver-pen-and-showing-pad-in-hospital-doctor-giving.jpg?s=612x612&w=is&k=20&c=DZAnHfYw10rf1U07xR-45qGm-Shos-DaB2lv9vkQnvM=" class="card-img-top" alt="Appointment image">
+                        <div class="card-body">
+                            <h5 class="card-title">Consultation</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">
+                                <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card border-primary justify-content-center" style="width: 18rem;">
+                        <img width="40" src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHBhdGllbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="patient image">
+                        <div class="card-body">
+                            <h5 class="card-title">Patients</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">
+                                <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
