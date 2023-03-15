@@ -26,7 +26,7 @@ public class MedicController {
     }
 
     @GetMapping("/form")
-    public String medicForm(MedicRequestDto medic) {
+    public String medicForm(MedicRequestDto medicReq) {
         return "medic/medic-form";
     }
 
@@ -37,7 +37,6 @@ public class MedicController {
 
         System.out.println(medicReq);
         Medic medic = new Medic(medicReq);
-
         medicDao.saveMedic(medic);
         return "redirect:/home";
     }

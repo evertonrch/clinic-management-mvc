@@ -14,7 +14,7 @@
                 <tr th:each="medic : ${medics}">
                     <td th:text="${medic.firstName}"></td>
                     <td th:text="${medic.crm}"></td>
-                    <td th:text="${medic.specialization} ? ${medic.specialization.description} : 'No spec'"></td>
+                    <td th:text="${medic.specialty}"></td>
                     <td class="text-center">
                         <a class="btn btn-danger" th:href="@{/medic/{firstName}(firstName=${medic.firstName})}">
                             <i class="fa-solid fa-trash-can"></i>

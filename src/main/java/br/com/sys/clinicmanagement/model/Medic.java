@@ -14,16 +14,15 @@ public class Medic {
     private Long id;
     private String firstName;
     private String crm;
-
     @Lob
     private String address;
 
-    @OneToOne
-    private Specialization specialization;
+    private String specialty;
 
-    public Medic(String firstName, String crm) {
+    public Medic(String firstName, String crm, String specialty) {
         this.firstName = firstName;
         this.crm = crm;
+        this.specialty = specialty;
     }
 
     public Medic(){
@@ -33,6 +32,7 @@ public class Medic {
         this.firstName = medicReq.getFirstName();
         this.address = medicReq.getAddress();
         this.crm = medicReq.getCrm();
+        this.specialty = medicReq.getSpecialty();
     }
 
     public String getFirstName() {
@@ -43,16 +43,8 @@ public class Medic {
         return crm;
     }
 
-    public Specialization getSpecialization() {
-        return specialization;
-    }
-
-    @Override
-    public String toString() {
-        return "Medic{" +
-                "firstName='" + firstName + '\'' +
-                ", crm='" + crm + '\'' +
-                '}';
+    public String getSpecialty() {
+        return specialty;
     }
 
     @Override

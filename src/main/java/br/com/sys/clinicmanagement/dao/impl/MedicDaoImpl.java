@@ -27,5 +27,19 @@ public class MedicDaoImpl implements MedicDao {
         entityManager.persist(medic);
     }
 
+    @Override
+    @Transactional
+    public List<String> medicsByName() {
+        return entityManager.createQuery("SELECT m.firstName FROM Medic m", String.class)
+                .getResultList();
+    }
+
+    @Override
+    public Medic findByName(String medic) {
+        return entityManager.createQuery("SELECT m FROM Medic m WHERE m.firstName = :medicName", Medic.class)
+                .setParameter("medicName", medic)
+                .getSingleResult();
+    }
+
 
 }

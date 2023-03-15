@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{base :: head('Create a constultation')}"></head>
+<body>
+  <main class="container">
+    <form th:object="${consultationRequestDto}"  th:action="@{/consultation/process}" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Date</label>
+        <input type="date" class="form-control" id="name" th:field="*{consultationDate}" />
+      </div>
+      <div class="mb-3">
+        <label for="crm" class="form-label">Time</label>
+        <input type="time" class="form-control" name="" id="crm" th:field="*{consultationTime}">
+      </div>
+      <div class="mb-3">
+        <label for="medic" class="form-label">Medic name</label>
+        <select th:field="*{medic}" class="form-select" id="medic">
+          <option th:disabled="disabled" th:selected="true" value="">
+            Choose a medic
+          </option>
+          <option th:each="medicName : ${medicsName}" th:value="${medicName.firstName}" th:text="${medicName.firstName}">
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="patient" class="form-label">Patient name</label>
+        <input type="text" class="form-control"  th:field="*{patient}"/>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" th:field="*{value}"/>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <a class="text-decoration-none text-right float-end" th:href="@{/home}">
+      <i class="fa-sharp fa-solid fa-arrow-left"></i>
+      <span>Go to back home page</span>
+    </a>
+  </main>
+</body>
+</html>

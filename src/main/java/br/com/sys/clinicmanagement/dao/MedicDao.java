@@ -8,4 +8,8 @@ public interface MedicDao {
 
     List<Medic> medics();
     void saveMedic(Medic medic);
+
+    List<String> medicsByName();
+
+    Medic findByName(String medic);
 }

@@ -49,8 +49,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Consultation</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">
-                                <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                            <a th:href="@{/consultation/create}" class="card-link">
+                                <i class="float-end fa-solid fa-plus"></i>
                             </a>
                         </div>
                     </div>
@@ -61,12 +61,35 @@
                         <div class="card-body">
                             <h5 class="card-title">Patients</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">
-                                <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                            <a th:href="@{/patient/create}" class="card-link">
+                                <i class="float-end fa-solid fa-plus"></i>
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="container mt-4">
+            <div class="row">
+                <h1 class="display-5 col-12">All Consultations</h1>
+                <table class="table table-borderless">
+                    <thead>
+                        <th>Patient</th>
+                        <th>Medic</th>
+                        <th>Scheduled date</th>
+                        <th>Scheduled time</th>
+                        <th>Price</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="consult : ${consultations}">
+                            <td th:text="${consult.patient} ? ${consult.patient.firstName} : 'NULL' "></td>
+                            <td th:text="${consult.medic} ? ${consult.medic.firstName} : 'NULL' "></td>
+                            <td th:text="${consult.consultationDate}"></td>
+                            <td th:text="${consult.consultationTime}"></td>
+                            <td th:text="${consult.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
