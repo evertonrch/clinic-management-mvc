@@ -36,7 +36,9 @@
                         <img width="40" src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" class="card-img-top" alt="Medic image">
                         <div class="card-body">
                             <h5 class="card-title">Medics</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">
+                                Doctors in office: <strong th:text="${totalMedics}">23</strong>
+                            </p>
                             <div class="d-flex justify-content-between">
                                 <a th:href="@{/medic}" class="card-link">
                                     <i class="fa-sharp fa-solid fa-arrow-right"></i>
@@ -53,7 +55,7 @@
                         <img width="40" src="https://media.istockphoto.com/id/1331029732/pt/foto/close-up-of-a-male-doctor-hand-hold-a-silver-pen-and-showing-pad-in-hospital-doctor-giving.jpg?s=612x612&w=is&k=20&c=DZAnHfYw10rf1U07xR-45qGm-Shos-DaB2lv9vkQnvM=" class="card-img-top" alt="Appointment image">
                         <div class="card-body">
                             <h5 class="card-title">Consultation</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Schedules below.</p>
                             <a th:href="@{/consultation/create}" class="card-link">
                                 <i class="float-end fa-solid fa-plus"></i>
                             </a>
@@ -65,7 +67,9 @@
                         <img width="40" src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHBhdGllbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="patient image">
                         <div class="card-body">
                             <h5 class="card-title">Patients</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">
+                                Registered patients: <strong th:text="${totalPatients}">23</strong>
+                            </p>
                             <div class="d-flex justify-content-between">
                                 <a th:href="@{/patient/create}" class="card-link">
                                     <i class="fa-solid fa-plus"></i>
@@ -84,17 +88,18 @@
                 <table class="table table-borderless">
                     <caption class="caption-top">All Consultations</caption>
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Patient</th>
+                        <th>Email</th>
                         <th>Medic</th>
-                        <th>Scheduled date</th>
+                        <th>Scheduled in</th>
                         <th>Price</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr th:each="consult : ${consultations}">
-                            <td th:text="${consult.patient} ? ${consult.patient.firstName} : 'NULL' "></td>
-                            <td th:text="${consult.medic} ? ${consult.medic.firstName} : 'NULL' "></td>
+                            <td th:text="${consult.patient} ? ${consult.patient.firstName} : 'No patient registered' "></td>
+                            <td th:text="${consult.medic} ? ${consult.medic.firstName} : 'No medic registered' "></td>
                             <td th:text="${#temporals.format(consult.scheduling, 'dd/MM/yyyy HH:mm')}"></td>
                             <td th:text="${consult.price}"></td>
                             <td>

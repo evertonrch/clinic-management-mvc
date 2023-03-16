@@ -36,10 +36,8 @@ public class PatientController {
         if(result.hasErrors())
             return "redirect:/patient/create-patient";
 
-        System.out.println(patientRequest);
         Patient patient = patientRequest.toPatient();
         patientDao.savePatient(patient);
-
         return "redirect:/home";
     }
 }

@@ -35,7 +35,7 @@ public class ConsultationController {
     @GetMapping("/create")
     public String create(Model model, ConsultationRequestDto consultationRequest) {
         medicDao.medicsByName().forEach(System.out::println);
-        model.addAttribute("medicsName", medicDao.medics());
+        model.addAttribute("medicsName", medicDao.getMedics());
         return "consultation/create-consult.html";
     }
 

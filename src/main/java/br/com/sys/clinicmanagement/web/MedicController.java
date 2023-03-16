@@ -22,7 +22,7 @@ public class MedicController {
     @GetMapping
     public ModelAndView medics() {
         ModelAndView mv = new ModelAndView("medic/medics");
-        mv.addObject("medics", medicDao.medics());
+        mv.addObject("medics", medicDao.getMedics());
         return mv;
     }
 
@@ -43,7 +43,6 @@ public class MedicController {
         if (result.hasErrors())
             return "redirect:/home";
 
-        System.out.println(medicReq);
         Medic medic = new Medic(medicReq);
         medicDao.saveMedic(medic);
         return "redirect:/home";

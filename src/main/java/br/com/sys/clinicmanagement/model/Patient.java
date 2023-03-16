@@ -14,7 +14,7 @@ public class Patient {
     private String firstName;
     private String middleName;
     private String lastName;
-    private LocalDate birthDate;
+    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -28,8 +28,8 @@ public class Patient {
         return lastName;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public String getEmail() {
+        return email;
     }
 
     public void setFirstName(String firstName) {
@@ -44,8 +44,8 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getId() {
@@ -57,11 +57,11 @@ public class Patient {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(id, patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(middleName, patient.middleName) && Objects.equals(lastName, patient.lastName) && Objects.equals(birthDate, patient.birthDate);
+        return Objects.equals(id, patient.id) && Objects.equals(firstName, patient.firstName) && Objects.equals(middleName, patient.middleName) && Objects.equals(lastName, patient.lastName) && Objects.equals(email, patient.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, middleName, lastName, birthDate);
+        return Objects.hash(id, firstName, middleName, lastName, email);
     }
 }

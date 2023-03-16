@@ -10,13 +10,13 @@ public class PatientRequestDto {
     private String middleName;
     private String lastName;
 
-    private String birthDate;
+    private String email;
 
-    public PatientRequestDto(String firstName, String middleName, String lastName, String birthDate) {
+    public PatientRequestDto(String firstName, String middleName, String lastName, String email) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -31,8 +31,8 @@ public class PatientRequestDto {
         return lastName;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getEmail() {
+        return email;
     }
 
     public void setFirstName(String firstName) {
@@ -47,8 +47,8 @@ public class PatientRequestDto {
         this.lastName = lastName;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Patient toPatient() {
@@ -56,7 +56,7 @@ public class PatientRequestDto {
         patient.setFirstName(firstName);
         patient.setMiddleName(middleName);
         patient.setLastName(lastName);
-        patient.setBirthDate(LocalDate.parse(birthDate));
+        patient.setEmail(email);
         return patient;
     }
 
@@ -66,7 +66,7 @@ public class PatientRequestDto {
                 "firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthDate='" + birthDate + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

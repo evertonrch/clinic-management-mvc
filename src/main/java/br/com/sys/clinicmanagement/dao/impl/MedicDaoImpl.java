@@ -16,7 +16,7 @@ public class MedicDaoImpl implements MedicDao {
     private EntityManager entityManager;
 
     @Override
-    public List<Medic> medics() {
+    public List<Medic> getMedics() {
         return entityManager.createQuery("SELECT m FROM Medic AS m", Medic.class)
                 .getResultList();
     }

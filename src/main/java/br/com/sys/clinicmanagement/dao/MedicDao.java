@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MedicDao {
 
-    List<Medic> medics();
+    List<Medic> getMedics();
     void saveMedic(Medic medic);
 
     List<String> medicsByName();
