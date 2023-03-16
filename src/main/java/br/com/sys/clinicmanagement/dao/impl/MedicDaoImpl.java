@@ -41,5 +41,16 @@ public class MedicDaoImpl implements MedicDao {
                 .getSingleResult();
     }
 
+    @Override
+    public Medic findById(long id) {
+        return entityManager.find(Medic.class, id);
+    }
+
+    @Transactional
+    @Override
+    public void delete(Medic medic) {
+        entityManager.remove(medic);
+    }
+
 
 }

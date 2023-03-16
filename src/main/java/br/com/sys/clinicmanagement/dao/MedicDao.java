@@ -12,4 +12,8 @@ public interface MedicDao {
     List<String> medicsByName();
 
     Medic findByName(String medic);
+
+    Medic findById(long parseLong);
+
+    void delete(Medic medic);
 }

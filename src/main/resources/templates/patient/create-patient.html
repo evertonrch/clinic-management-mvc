@@ -20,8 +20,11 @@
             <label for="birthDate" class="form-label">Birth date</label>
             <input type="date" th:field="*{birthDate}" class="form-control" />
         </div>
-
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="text-decoration-none text-right float-end" th:href="@{/home}">
+            <i class="fa-sharp fa-solid fa-arrow-left"></i>
+            <span>Go to back home page</span>
+        </a>
     </form>
     <!--        <a>Add a specialty for this doctor?</a>-->
 </main>
