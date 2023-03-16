@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,6 +39,13 @@ public class ConsultationController {
         return "consultation/create-consult.html";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") String id) {
+        Consultation consultation = consultationDao.findById(Long.parseLong(id));
+        consultationDao.delete(consultation);
+        return "redirect:/home";
+    }
+
     @PostMapping("/process")
     public String processForm(ConsultationRequestDto consultationRequest, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
@@ -46,18 +54,13 @@ public class ConsultationController {
             return "redirect:/consultation/create-consult";
         }
 
-        System.out.println(consultationRequest);
-
         Medic medic = medicDao.findByName(consultationRequest.getMedic());
-        System.out.println("medic= " + medic.getCrm());
-
         Patient patient = patientDao.findByName(consultationRequest.getPatient());
 
         Consultation consultation = consultationRequest.toConsultation();
         consultation.setMedic(medic);
         consultation.setPatient(patient);
 
-        System.out.println(consultation);
         consultationDao.saveConsultation(consultation);
         return "redirect:/home";
     }

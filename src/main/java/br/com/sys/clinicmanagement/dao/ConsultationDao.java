@@ -9,4 +9,8 @@ public interface ConsultationDao {
     void saveConsultation(Consultation consultation);
 
     List<Consultation> getConsultations();
+
+    void delete(Consultation consultation);
+
+    Consultation findById(Long id);
 }

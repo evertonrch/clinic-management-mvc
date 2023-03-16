@@ -26,4 +26,15 @@ public class ConsultationDaoImpl implements ConsultationDao {
         return entityManager.createQuery("SELECT c FROM Consultation c", Consultation.class)
                 .getResultList();
     }
+
+    @Transactional
+    @Override
+    public void delete(Consultation consultation) {
+        entityManager.remove(consultation);
+    }
+
+    @Override
+    public Consultation findById(Long id) {
+        return entityManager.find(Consultation.class, id);
+    }
 }
