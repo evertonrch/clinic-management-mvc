@@ -85,7 +85,6 @@
                         <th>Patient</th>
                         <th>Medic</th>
                         <th>Scheduled date</th>
-                        <th>Scheduled time</th>
                         <th>Price</th>
                     </tr>
                     </thead>
@@ -93,8 +92,7 @@
                         <tr th:each="consult : ${consultations}">
                             <td th:text="${consult.patient} ? ${consult.patient.firstName} : 'NULL' "></td>
                             <td th:text="${consult.medic} ? ${consult.medic.firstName} : 'NULL' "></td>
-                            <td th:text="${#temporals.format(consult.consultationDate, 'dd/MM/yyyy')}"></td>
-                            <td th:text="${consult.consultationTime}"></td>
+                            <td th:text="${#temporals.format(consult.scheduling, 'dd/MM/yyyy HH:mm')}"></td>
                             <td th:text="${consult.price}"></td>
                             <td>
                                 <a th:href="@{/consultation/delete/{id}(id=${consult.id})}"><i class="text-danger fa-solid fa-square-xmark"></i></a>

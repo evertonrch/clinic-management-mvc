@@ -4,6 +4,7 @@ import br.com.sys.clinicmanagement.model.Consultation;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class ConsultationRequestDto {
@@ -55,8 +56,8 @@ public class ConsultationRequestDto {
 
     public Consultation toConsultation() {
         Consultation consultation = new Consultation();
-        consultation.setConsultationDate(LocalDate.parse(consultationDate));
-        consultation.setConsultationTime(LocalTime.parse(consultationTime));
+        consultation.setScheduling(
+                LocalDateTime.of(LocalDate.parse(consultationDate), LocalTime.parse(consultationTime)));
         consultation.setPrice(new BigDecimal(value));
         return consultation;
     }

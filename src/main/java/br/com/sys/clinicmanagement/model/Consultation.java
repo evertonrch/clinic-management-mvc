@@ -3,6 +3,7 @@ package br.com.sys.clinicmanagement.model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
@@ -13,8 +14,7 @@ public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate consultationDate;
-    private LocalTime consultationTime;
+    private LocalDateTime scheduling;
     @Column(precision = 10, scale = 2)
     private BigDecimal price;
     @OneToOne
@@ -24,9 +24,8 @@ public class Consultation {
 
     public Consultation() {}
 
-    public Consultation(LocalDate consultationDate, LocalTime consultationTime, BigDecimal price) {
-        this.consultationDate = consultationDate;
-        this.consultationTime = consultationTime;
+    public Consultation(LocalDateTime scheduling, BigDecimal price) {
+        this.scheduling = scheduling;
         this.price = price;
     }
 
@@ -35,44 +34,20 @@ public class Consultation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Consultation that = (Consultation) o;
-        return Objects.equals(id, that.id) && Objects.equals(consultationDate, that.consultationDate) && Objects.equals(consultationTime, that.consultationTime) && Objects.equals(price, that.price) && Objects.equals(patient, that.patient) && Objects.equals(medic, that.medic);
+        return Objects.equals(id, that.id) && Objects.equals(scheduling, that.scheduling) && Objects.equals(price, that.price) && Objects.equals(patient, that.patient) && Objects.equals(medic, that.medic);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, consultationDate, consultationTime, price, patient, medic);
-    }
-
-    public void setMedic(Medic medic) {
-        this.medic = medic;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public void setConsultationDate(LocalDate consultationDate) {
-        this.consultationDate = consultationDate;
-    }
-
-    public void setConsultationTime(LocalTime consultationTime) {
-        this.consultationTime = consultationTime;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public LocalDate getConsultationDate() {
-        return consultationDate;
-    }
-
-    public LocalTime getConsultationTime() {
-        return consultationTime;
+        return Objects.hash(id, scheduling, price, patient, medic);
     }
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    public LocalDateTime getScheduling() {
+        return scheduling;
     }
 
     public Patient getPatient() {
@@ -87,12 +62,27 @@ public class Consultation {
         return id;
     }
 
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public void setMedic(Medic medic) {
+        this.medic = medic;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setScheduling(LocalDateTime scheduling) {
+        this.scheduling = scheduling;
+    }
+
     @Override
     public String toString() {
         return "Consultation{" +
                 "id=" + id +
-                ", consultationDate=" + consultationDate +
-                ", consultationTime=" + consultationTime +
+                ", scheduling=" + scheduling +
                 ", price=" + price +
                 ", patient=" + patient +
                 ", medic=" + medic +
