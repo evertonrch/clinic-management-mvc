@@ -48,6 +48,10 @@ public class Patient {
         this.birthDate = birthDate;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
