@@ -2,9 +2,11 @@ package br.com.sys.clinicmanagement.web;
 
 import br.com.sys.clinicmanagement.dao.ConsultationDao;
 import br.com.sys.clinicmanagement.dao.MedicDao;
+import br.com.sys.clinicmanagement.dao.PatientDao;
 import br.com.sys.clinicmanagement.dto.ConsultationRequestDto;
 import br.com.sys.clinicmanagement.model.Consultation;
 import br.com.sys.clinicmanagement.model.Medic;
+import br.com.sys.clinicmanagement.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,9 @@ public class ConsultationController {
     @Autowired
     private ConsultationDao consultationDao;
 
+    @Autowired
+    private PatientDao patientDao;
+
     @GetMapping("/create")
     public String create(Model model, ConsultationRequestDto consultationRequest) {
         medicDao.medicsByName().forEach(System.out::println);
@@ -46,13 +51,14 @@ public class ConsultationController {
         Medic medic = medicDao.findByName(consultationRequest.getMedic());
         System.out.println("medic= " + medic.getCrm());
 
+        Patient patient = patientDao.findByName(consultationRequest.getPatient());
+
         Consultation consultation = consultationRequest.toConsultation();
         consultation.setMedic(medic);
-        consultation.setPatient(null);
+        consultation.setPatient(patient);
 
         System.out.println(consultation);
         consultationDao.saveConsultation(consultation);
-
         return "redirect:/home";
     }
 }

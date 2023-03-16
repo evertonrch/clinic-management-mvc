@@ -37,8 +37,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Medics</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a th:href="@{/medic/}" class="card-link">
+                            <a th:href="@{/medic}" class="card-link">
                                 <i class="fa-sharp fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a th:href="@{/medic/form}" class="card-link">
+                                <i class="float-end fa-solid fa-plus"></i>
                             </a>
                         </div>
                     </div>
@@ -63,6 +66,9 @@
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a th:href="@{/patient/create}" class="card-link">
                                 <i class="float-end fa-solid fa-plus"></i>
+                            </a>
+                            <a th:href="@{/patient}" class="card-link ms-0">
+                                <i class="fa-sharp fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{base :: head('Patient')}"></head>
+<body>
+<main class="container">
+    <form th:object="${patientRequestDto}" th:action="@{/patient/processForm}" method="POST">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First name</label>
+            <input type="text" th:field="*{firstName}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="middleName" class="form-label">Middle name</label>
+            <input type="text" th:field="*{middleName}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" th:field="*{lastName}" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="birthDate" class="form-label">Birth date</label>
+            <input type="date" th:field="*{birthDate}" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!--        <a>Add a specialty for this doctor?</a>-->
+</main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{base :: head('Patients')}"
+<body>
+<body>
+<div class="container">
+    <table class="table table-sm mb-3">
+        <thead>
+        <th>FirstName</th>
+        <th>MiddleName</th>
+        <th>LastName</th>
+        <th>BirthDate</th>
+        </thead>
+        <tbody>
+        <tr th:each="patient : ${patients}">
+            <td th:text="${patient.firstName}"></td>
+            <td th:text="${patient.middleName}"></td>
+            <td th:text="${patient.lastName}"></td>
+            <td th:text="${patient.birthDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="text-decoration-none text-right float-end" th:href="@{/home}">
+        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+        <span>Go to back home page</span>
+    </a>
+</div>
+</body>
+</body>
+</html>
