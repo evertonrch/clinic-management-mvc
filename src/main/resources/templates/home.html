@@ -79,20 +79,27 @@
             <div class="row">
                 <h1 class="display-5 col-12">All Consultations</h1>
                 <table class="table table-borderless">
+                    <caption class="caption-top">All Consultations</caption>
                     <thead>
+                    <tr>
                         <th>Patient</th>
                         <th>Medic</th>
                         <th>Scheduled date</th>
                         <th>Scheduled time</th>
                         <th>Price</th>
+                    </tr>
                     </thead>
                     <tbody>
                         <tr th:each="consult : ${consultations}">
                             <td th:text="${consult.patient} ? ${consult.patient.firstName} : 'NULL' "></td>
                             <td th:text="${consult.medic} ? ${consult.medic.firstName} : 'NULL' "></td>
-                            <td th:text="${consult.consultationDate}"></td>
+                            <td th:text="${#temporals.format(consult.consultationDate, 'dd/MM/yyyy')}"></td>
                             <td th:text="${consult.consultationTime}"></td>
                             <td th:text="${consult.price}"></td>
+                            <td>
+                                <a th:href="@{/consultation/delete/{id}(id=${consult.id})}"><i class="text-danger fa-solid fa-square-xmark"></i></a>
+                                <a th:href="@{/consultation/sendEmail/{id}(id=${consult.id})}"><i class="text-success fa-solid fa-square-check"></i></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
